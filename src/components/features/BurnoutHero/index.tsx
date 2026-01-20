@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { SITE_CONFIG } from '@/constants';
 
 const BurnoutHero: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -58,9 +59,9 @@ const BurnoutHero: React.FC = () => {
         ctx.translate(this.x, this.y);
         ctx.rotate(this.rotation);
         ctx.fillStyle = `rgba(10, 10, 10, ${this.life})`;
-        ctx.fillRect(-this.size/2, -this.size/2, this.size, this.size);
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
         ctx.fillStyle = `rgba(0, 0, 0, ${this.life * 0.3})`;
-        ctx.fillRect(-this.size/2, -this.size/2, this.size * 2.5, this.size * 0.4);
+        ctx.fillRect(-this.size / 2, -this.size / 2, this.size * 2.5, this.size * 0.4);
         ctx.restore();
       }
     }
@@ -90,7 +91,7 @@ const BurnoutHero: React.FC = () => {
       const prevY = carY;
       carX = width / 2 + Math.cos(t) * (width * 0.4);
       carY = height / 2 + Math.sin(t * 2) * (height * 0.25);
-      
+
       const dx = carX - prevX;
       const dy = carY - prevY;
       const baseAngle = Math.atan2(dy, dx);
@@ -104,10 +105,10 @@ const BurnoutHero: React.FC = () => {
       const rearRY = carY + Math.sin(carAngle - 2.5) * 45;
 
       if (Math.abs(driftIntensity) > 0.2) {
-        for(let i=0; i<2; i++) {
-          smoke.push(new Particle(rearLX, rearLY, -Math.cos(carAngle)*10, -Math.sin(carAngle)*5));
-          smoke.push(new Particle(rearRX, rearRY, -Math.cos(carAngle)*10, -Math.sin(carAngle)*5));
-          
+        for (let i = 0; i < 2; i++) {
+          smoke.push(new Particle(rearLX, rearLY, -Math.cos(carAngle) * 10, -Math.sin(carAngle) * 5));
+          smoke.push(new Particle(rearRX, rearRY, -Math.cos(carAngle) * 10, -Math.sin(carAngle) * 5));
+
           if (Math.random() > 0.94) {
             rubber.push(new LensDebris(
               Math.random() * width,
@@ -171,10 +172,10 @@ const BurnoutHero: React.FC = () => {
   return (
     <div className="relative w-full h-[650px] border-b border-white/5 overflow-hidden bg-black">
       <canvas ref={canvasRef} className="block w-full h-full opacity-80" />
-      
+
       <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none px-6 text-center select-none z-10">
         <h1 className="text-[12rem] md:text-[18rem] font-black tracking-tighter text-white drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)] leading-none">
-          ALEX
+          {SITE_CONFIG.name}
         </h1>
         <div className="mt-[-2rem] flex flex-col items-center gap-6">
           <p className="text-neutral-400 font-bold tracking-[0.5em] uppercase text-xs md:text-sm bg-black/60 px-8 py-3 rounded-full backdrop-blur-md border border-white/10">
@@ -193,7 +194,7 @@ const BurnoutHero: React.FC = () => {
           <span className="text-[9px] mono text-neutral-500 uppercase tracking-widest">Autonomous_Vector_Rendering</span>
         </div>
       </div>
-      
+
       {/* Cinematic Vignette */}
       <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]"></div>
     </div>

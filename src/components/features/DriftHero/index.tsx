@@ -24,7 +24,7 @@ const DriftHero: React.FC = () => {
     let isDrifting = false;
 
     class TireMark {
-      constructor(public x: number, public y: number, public a: number) {}
+      constructor(public x: number, public y: number, public a: number) { }
       draw(ctx: CanvasRenderingContext2D) {
         ctx.save();
         ctx.translate(this.x, this.y);
@@ -69,14 +69,14 @@ const DriftHero: React.FC = () => {
 
       // Physics logic
       carX += speed;
-      
+
       // Trigger drift in the middle
       if (carX > width * 0.3 && carX < width * 0.7) {
         isDrifting = true;
         angle = Math.min(angle + 0.02, Math.PI / 6);
         carY += Math.sin(angle) * 2;
         tireMarks.push(new TireMark(carX, carY, angle));
-        for(let i=0; i<2; i++) smokeParticles.push(new Particle(carX - 40, carY));
+        for (let i = 0; i < 2; i++) smokeParticles.push(new Particle(carX - 40, carY));
       } else {
         isDrifting = false;
         angle = Math.max(angle - 0.02, 0);
@@ -102,20 +102,20 @@ const DriftHero: React.FC = () => {
       ctx.save();
       ctx.translate(carX, carY);
       ctx.rotate(angle);
-      
+
       // Chassis
       ctx.fillStyle = '#f97316'; // Racing Orange
       ctx.fillRect(-50, -25, 100, 50);
-      
+
       // Highlights
       ctx.fillStyle = 'rgba(255,255,255,0.2)';
       ctx.fillRect(-30, -20, 40, 40);
-      
+
       // Headlights
       ctx.fillStyle = '#fff';
       ctx.fillRect(45, -20, 5, 10);
       ctx.fillRect(45, 10, 5, 10);
-      
+
       // Ground Shadow
       ctx.restore();
 
@@ -154,12 +154,12 @@ const DriftHero: React.FC = () => {
       <canvas ref={canvasRef} className="block w-full h-full opacity-60" />
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="text-center">
-            <h1 className="text-8xl font-black tracking-tighter mix-blend-difference">
-                SYSTEMS <span className="text-orange-500">ENGINEER</span>
-            </h1>
-            <p className="mono text-sm text-neutral-500 tracking-[0.4em] uppercase mt-4">
-                Optimization // Performance // Critical Infrastructure
-            </p>
+          <h1 className="text-8xl font-black tracking-tighter mix-blend-difference">
+            SYSTEMS <span className="text-orange-500">ENGINEER</span>
+          </h1>
+          <p className="mono text-sm text-neutral-500 tracking-[0.4em] uppercase mt-4">
+            Optimization // Performance // Critical Infrastructure
+          </p>
         </div>
       </div>
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none border-[20px] border-[#0f0f0f] opacity-20"></div>

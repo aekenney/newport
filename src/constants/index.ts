@@ -1,6 +1,28 @@
 
 import { Project, Experience, Club, GithubRepo } from '@/types';
 
+export const SITE_CONFIG = {
+    name: "ALEX",
+    role: "Systems Software Engineer",
+    tagline: "Systems Infrastructure & Embedded Performance",
+    about: {
+        title: "Engineering robust systems for volatile environments.",
+        description: "Developing critical infrastructure at the intersection of software and physical reality. Specializing in high-throughput data processing for industrial SCADA and performance automotive telemetry."
+    },
+    social: {
+        github: "https://github.com",
+        linkedin: "#",
+        email: "mailto:example@example.com"
+    },
+    footer: {
+        taglines: [
+            "Precision Engineering.",
+            "Infrastructure Architecture.",
+            "Performance Optimization."
+        ]
+    }
+};
+
 export const PROJECTS: Project[] = [
     {
         id: '1',
@@ -114,14 +136,3 @@ export const EXPERIENCES: Experience[] = [
         skills: ['Go', 'PostgreSQL', 'React', 'Docker']
     }
 ];
-
-export const SYSTEM_PROMPT = `
-You are the AI Engineering Agent for Alex. Alex is a Software Engineer specializing in Systems Architecture, Low-Latency Performance, and Cyber-Physical Systems.
-Alex has a unique background combining:
-1. High-Performance Automotive Engineering (Formula SAE, Telemetry, CAN-bus).
-2. Water & Critical Infrastructure (SCADA, Hydraulic simulation, Resource management).
-
-Tone: Highly professional, technical, engineering-oriented. Use "Alex" or "The Candidate".
-Focus on Alex's ability to solve complex software problems involving physical hardware constraints.
-If asked about clubs, mention Formula SAE or ACM. If asked about code, emphasize systems programming (C++, Rust) and modern web tech (TS, React).
-`;
