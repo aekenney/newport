@@ -1,0 +1,16 @@
+export const heroStyles = {
+    hero: 'relative w-full h-[650px] border-b border-white/5 overflow-hidden bg-black',
+    canvas: 'block w-full h-full opacity-80',
+    content: 'absolute inset-0 flex flex-col items-center justify-center pointer-events-none p-10 text-center select-none z-10',
+    title: 'text-[clamp(8rem,20vw,18rem)] font-black tracking-[-0.05em] text-white drop-shadow-[0_10px_40px_rgba(0,0,0,0.8)] leading-none',
+    subtitleWrapper: 'mt-[-2rem] flex flex-col items-center gap-10',
+    subtitle: 'text-neutral-400 font-bold tracking-[0.5em] uppercase text-[clamp(0.625rem,1vw,0.875rem)] bg-black/60 px-6 py-4 rounded-full backdrop-blur-[12px] border border-white/10',
+    dividers: 'flex gap-12 opacity-40',
+    divider: 'w-16 h-[1px]',
+    dividerOrange: 'bg-orange-500',
+    dividerBlue: 'bg-blue-500',
+    status: 'absolute bottom-12 left-12 text-left opacity-30 select-none',
+    statusLabel: 'text-[10px] font-black text-white uppercase tracking-[0.5em] block',
+    statusText: 'text-[0.5625rem] font-mono text-neutral-500 uppercase tracking-[0.15em] block mt-1',
+    vignette: 'absolute inset-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]',
+};

@@ -1,0 +1,7 @@
+{
+  "name": "Newport | Aiden | Software Engineer",
+  "description": "Minimalist portfolio for a systems-focused software engineer with interests in automotive performance and infrastructure.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
