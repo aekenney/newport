@@ -1,7 +1,6 @@
 import React from 'react';
 import type { CardProps } from '@/types/components';
-import { cn } from '@/utils';
-import { cardVariants } from './styles';
+import styles from './Card.module.css';
 
 /**
  * Reusable Card component for consistent container styling
@@ -11,9 +10,13 @@ export const Card: React.FC<CardProps> = ({
     className = '',
     hover = false,
 }) => {
-    return (
-        <div className={cn(cardVariants({ hover }), className)}>
-            {children}
-        </div>
-    );
+    const cardClasses = [
+        styles.card,
+        hover && styles['card--hover'],
+        className,
+    ]
+        .filter(Boolean)
+        .join(' ');
+
+    return <div className={cardClasses}>{children}</div>;
 };

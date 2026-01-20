@@ -1,8 +1,7 @@
 import React from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '@/constants';
-import { cn } from '@/utils';
-import { mobileMenuStyles } from './styles';
+import styles from './MobileMenu.module.css';
 
 interface MobileMenuProps {
     isOpen: boolean;
@@ -17,7 +16,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onToggle }) => {
         <>
             <button
                 onClick={onToggle}
-                className={cn(mobileMenuStyles.button)}
+                className={styles['mobile-menu__button']}
                 aria-label="Toggle menu"
                 aria-expanded={isOpen}
             >
@@ -27,18 +26,18 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onToggle }) => {
             {isOpen && (
                 <>
                     <div
-                        className={cn(mobileMenuStyles.overlay)}
+                        className={styles['mobile-menu__overlay']}
                         onClick={onToggle}
                         aria-hidden="true"
                     />
-                    <nav className={cn(mobileMenuStyles.nav)}>
-                        <div className={cn(mobileMenuStyles.links)}>
+                    <nav className={styles['mobile-menu__nav']}>
+                        <div className={styles['mobile-menu__links']}>
                             {NAV_LINKS.map(link => (
                                 <a
                                     key={link.href}
                                     href={link.href}
                                     onClick={onToggle}
-                                    className={cn(mobileMenuStyles.link)}
+                                    className={styles['mobile-menu__link']}
                                 >
                                     {link.label}
                                 </a>

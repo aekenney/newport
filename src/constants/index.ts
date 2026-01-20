@@ -1,8 +1,36 @@
-import type { Project, Experience, Club, GithubRepo } from '@/types';
 
-// Export configuration constants
-export * from './config';
-export * from './metadata';
+import { Project, Experience, Club, GithubRepo } from '@/types';
+
+export const PROJECTS: Project[] = [
+    {
+        id: '1',
+        title: 'Distributed SCADA Middleware',
+        description: 'High-throughput data ingestion engine for industrial sensor arrays. Optimized for sub-50ms latency in critical valve modulation feedback loops.',
+        tags: ['C++', 'Rust', 'Redis', 'MQTT'],
+        link: '#',
+        image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800',
+        category: 'software'
+    },
+    {
+        id: '2',
+        title: 'CAN-bus Telemetry Analyzer',
+        description: 'Real-time decoding and visualization of automotive controller area networks. Implements predictive failure modeling for performance engines.',
+        tags: ['Python', 'Embedded C', 'React', 'D3.js'],
+        link: '#',
+        image: 'https://images.unsplash.com/photo-1551288049-bbbda536639a?auto=format&fit=crop&q=80&w=800',
+        category: 'automotive'
+    },
+    {
+        id: '3',
+        title: 'Hydraulic Logic Simulator',
+        description: 'A browser-based visual programming language for modeling fluid power systems and waste-water treatment cycles.',
+        tags: ['TypeScript', 'WebGL', 'WebAssembly'],
+        link: '#',
+        image: 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800',
+        category: 'water'
+    }
+];
+
 export const REPOS: GithubRepo[] = [
     {
         id: 'r1',
@@ -31,7 +59,7 @@ export const REPOS: GithubRepo[] = [
         forks: 42,
         url: '#'
     }
-] as const;
+];
 
 export const CLUBS: Club[] = [
     {
@@ -58,7 +86,7 @@ export const CLUBS: Club[] = [
         description: 'Advising on the implementation of IoT sensor networks for regional waste-water runoff monitoring.',
         icon: 'droplet'
     }
-] as const;
+];
 
 export const EXPERIENCES: Experience[] = [
     {
@@ -85,4 +113,15 @@ export const EXPERIENCES: Experience[] = [
         ],
         skills: ['Go', 'PostgreSQL', 'React', 'Docker']
     }
-] as const;
+];
+
+export const SYSTEM_PROMPT = `
+You are the AI Engineering Agent for Alex. Alex is a Software Engineer specializing in Systems Architecture, Low-Latency Performance, and Cyber-Physical Systems.
+Alex has a unique background combining:
+1. High-Performance Automotive Engineering (Formula SAE, Telemetry, CAN-bus).
+2. Water & Critical Infrastructure (SCADA, Hydraulic simulation, Resource management).
+
+Tone: Highly professional, technical, engineering-oriented. Use "Alex" or "The Candidate".
+Focus on Alex's ability to solve complex software problems involving physical hardware constraints.
+If asked about clubs, mention Formula SAE or ACM. If asked about code, emphasize systems programming (C++, Rust) and modern web tech (TS, React).
+`;

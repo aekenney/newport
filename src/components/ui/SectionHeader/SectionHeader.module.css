@@ -1,0 +1,20 @@
+.section-header {
+    margin-bottom: var(--spacing-3xl);
+}
+
+.section-header__title {
+    font-size: var(--font-size-xs);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.section-header__subtitle {
+    font-size: var(--font-size-xs);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--color-neutral-600);
+}

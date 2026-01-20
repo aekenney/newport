@@ -1,6 +1,4 @@
-/**
- * Project data interface
- */
+
 export interface Project {
     id: string;
     title: string;
@@ -11,9 +9,6 @@ export interface Project {
     category: 'water' | 'automotive' | 'software';
 }
 
-/**
- * Professional experience interface
- */
 export interface Experience {
     id: string;
     company: string;
@@ -23,9 +18,6 @@ export interface Experience {
     skills: string[];
 }
 
-/**
- * Club/organization interface
- */
 export interface Club {
     id: string;
     name: string;
@@ -35,9 +27,6 @@ export interface Club {
     icon: string;
 }
 
-/**
- * GitHub repository interface
- */
 export interface GithubRepo {
     id: string;
     name: string;
@@ -46,4 +35,9 @@ export interface GithubRepo {
     stars: number;
     forks: number;
     url: string;
+}
+
+export interface ChatMessage {
+    role: 'user' | 'model';
+    text: string;
 }

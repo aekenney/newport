@@ -1,90 +1,103 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
+    Github,
     Car,
     Terminal,
     Star,
     GitBranch,
-    Layers,
+    Box,
+    ArrowRight,
     Droplets,
     ChevronRight,
-    Cpu
+    Cpu,
+    Layers,
+    FlaskConical
 } from 'lucide-react';
-import { BurnoutHero } from '@/components/features/BurnoutHero';
-import { Button, SectionHeader, MobileMenu } from '@/components/ui';
-import {
-    EXPERIENCES,
-    REPOS,
-    CLUBS,
-    SITE_CONFIG,
-    SOCIAL_LINKS,
-    NAV_LINKS,
-    FOOTER_LINKS,
-    ABOUT_CONTENT,
-    SECTION_HEADERS,
-    FOOTER_CONTENT
-} from '@/constants';
+import BurnoutHero from '@/components/features/BurnoutHero';
+import AIChat from '@/components/features/AIChat';
+import ProcessControl from '@/components/features/ProcessControl';
+import { PROJECTS, EXPERIENCES, REPOS, CLUBS } from '@/constants';
+
+const SectionHeader: React.FC<{ title: string; subtitle?: string }> = ({ title, subtitle }) => (
+    <div className="mb-20">
+        <div className="flex items-center gap-4 mb-4">
+            <div className="h-[1px] w-8 bg-neutral-800"></div>
+            <span className="text-[10px] font-black tracking-[0.3em] text-neutral-600 uppercase">{subtitle || 'Registry'}</span>
+        </div>
+        <h2 className="text-4xl font-black tracking-tighter text-white uppercase">{title}</h2>
+    </div>
+);
 
 const App: React.FC = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     return (
         <div className="min-h-screen bg-black text-white selection:bg-white selection:text-black">
-            <a
-                href="#main"
-                className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[70] focus:px-4 focus:py-2 focus:bg-white focus:text-black focus:rounded-lg focus:font-bold"
-            >
-                Skip to main content
-            </a>
+            {/* Navigation */}
             <nav className="fixed top-0 z-[60] w-full bg-black/50 backdrop-blur-2xl border-b border-white/5">
                 <div className="max-w-7xl mx-auto px-10 h-20 flex items-center justify-between">
                     <div className="flex items-center gap-16">
-                        <span className="font-black text-sm tracking-[0.4em] cursor-default">{SITE_CONFIG.name.toUpperCase()}</span>
+                        <span className="font-black text-sm tracking-[0.4em] cursor-default">ALEX</span>
                         <div className="hidden lg:flex gap-12 text-[10px] font-black text-neutral-500 uppercase tracking-widest">
-                            {NAV_LINKS.map(link => (
-                                <a key={link.href} href={link.href} className="hover:text-white transition-all hover:tracking-[0.2em]">
-                                    {link.label}
-                                </a>
-                            ))}
+                            <a href="#repos" className="hover:text-white transition-all hover:tracking-[0.2em]">Manifest</a>
+                            <a href="#projects" className="hover:text-white transition-all hover:tracking-[0.2em]">Engineering</a>
+                            <a href="#experience" className="hover:text-white transition-all hover:tracking-[0.2em]">History</a>
                         </div>
                     </div>
-                    <div className="flex items-center gap-4">
-                        <a href={SOCIAL_LINKS.github} target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black rounded" aria-label="GitHub Profile">
+                    <div className="flex items-center gap-8">
+                        <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-neutral-500 hover:text-white transition-colors">
                             <Github size={20} />
                         </a>
-                        <a href={SOCIAL_LINKS.resume} download>
-                            <Button>Resume</Button>
-                        </a>
-                        <MobileMenu isOpen={isMobileMenuOpen} onToggle={() => setIsMobileMenuOpen(!isMobileMenuOpen)} />
+                        <button className="bg-white text-black px-8 py-2 rounded-full text-[10px] font-black tracking-widest hover:bg-neutral-200 transition-all uppercase">
+                            Resume
+                        </button>
                     </div>
                 </div>
             </nav>
-            <BurnoutHero />
-            <main id="main" className="max-w-7xl mx-auto px-6 md:px-10 py-20 md:py-40 space-y-36 md:space-y-72">
-                <section id="about" className="max-w-4xl mx-auto text-center space-y-12">
-                    <div className="flex items-center gap-4 text-orange-500 justify-center">
-                        <Cpu size={18} />
-                        <span className="text-[10px] font-black tracking-[0.4em] uppercase">{ABOUT_CONTENT.badge}</span>
-                    </div>
-                    <p className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-[1.0] text-neutral-100">
-                        {ABOUT_CONTENT.headline.prefix} <span className="text-orange-500 italic">{ABOUT_CONTENT.headline.highlight1}</span> {ABOUT_CONTENT.headline.middle} <span className="text-blue-500 italic">{ABOUT_CONTENT.headline.highlight2}</span> {ABOUT_CONTENT.headline.suffix}
-                    </p>
-                    <p className="text-xl text-neutral-500 leading-relaxed max-w-2xl font-medium mx-auto">
-                        {ABOUT_CONTENT.description}
-                    </p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 border-t border-white/5 max-w-3xl mx-auto">
-                        {ABOUT_CONTENT.capabilities.map((capability, index) => (
-                            <div key={index} className="space-y-4">
-                                <div className={`flex items-center gap-3 text-${capability.color}-500 justify-center`}>
-                                    {capability.icon === 'car' ? <Car size={16} /> : <Droplets size={16} />}
-                                    <span className="text-[10px] font-black uppercase tracking-widest">{capability.title}</span>
+            {/* Hero */}
+            <BurnoutHero />
+
+            <main className="max-w-7xl mx-auto px-10 py-40 space-y-72">
+
+                {/* Core Capabilities */}
+                <section id="about" className="grid grid-cols-1 lg:grid-cols-12 gap-24 items-start">
+                    <div className="lg:col-span-7 space-y-12">
+                        <div className="flex items-center gap-4 text-orange-500">
+                            <Cpu size={18} />
+                            <span className="text-[10px] font-black tracking-[0.4em] uppercase">Core Mission</span>
+                        </div>
+                        <p className="text-5xl md:text-7xl font-bold tracking-tight leading-[1.0] text-neutral-100">
+                            Engineering <span className="text-orange-500 italic">robust</span> systems for <span className="text-blue-500 italic">volatile</span> environments.
+                        </p>
+                        <p className="text-xl text-neutral-500 leading-relaxed max-w-2xl font-medium">
+                            Developing critical infrastructure at the intersection of software and physical reality.
+                            Specializing in high-throughput data processing for industrial SCADA and performance automotive telemetry.
+                        </p>
+
+                        <div className="grid grid-cols-2 gap-12 pt-12 border-t border-white/5">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3 text-orange-500">
+                                    <Car size={16} />
+                                    <span className="text-[10px] font-black uppercase tracking-widest">Low Latency</span>
                                 </div>
-                                <p className="text-sm text-neutral-400 leading-relaxed">{capability.description}</p>
+                                <p className="text-sm text-neutral-400 leading-relaxed">Reducing execution overhead in performance-critical C++ environments for real-time sensor ingestion.</p>
                             </div>
-                        ))}
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-3 text-blue-500">
+                                    <Droplets size={16} />
+                                    <span className="text-[10px] font-black uppercase tracking-widest">Fluid Dynamics</span>
+                                </div>
+                                <p className="text-sm text-neutral-400 leading-relaxed">Modeling complex hydraulic logic and automated valve control for regional wastewater management.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="lg:col-span-5">
+                        <ProcessControl />
                     </div>
                 </section>
+
+                {/* Repos */}
                 <section id="repos">
-                    <SectionHeader title={SECTION_HEADERS.repos.title} subtitle={SECTION_HEADERS.repos.subtitle} />
+                    <SectionHeader title="Source Registry" subtitle="Software Infrastructure" />
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {REPOS.map(repo => (
                             <a
@@ -113,9 +126,47 @@ const App: React.FC = () => {
                         ))}
                     </div>
                 </section>
+
+                {/* Projects */}
+                <section id="projects">
+                    <SectionHeader title="Case Studies" subtitle="Physical Systems" />
+                    <div className="space-y-12">
+                        {PROJECTS.map(project => (
+                            <div
+                                key={project.id}
+                                className="p-12 rounded-3xl bg-neutral-900/20 border border-white/5 flex flex-col lg:flex-row gap-16 group hover:border-white/20 transition-all"
+                            >
+                                <div className="w-full lg:w-[450px] aspect-video rounded-2xl overflow-hidden bg-neutral-900 shrink-0 border border-white/5">
+                                    <img src={project.image} alt={project.title} className="w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-70 transition-all duration-1000" />
+                                </div>
+                                <div className="flex-1 flex flex-col justify-center">
+                                    <div className="flex items-center gap-4 mb-6">
+                                        <span className={`text-[10px] font-black tracking-[0.3em] uppercase px-3 py-1 rounded-md ${project.category === 'automotive' ? 'text-orange-500 bg-orange-500/5' : 'text-blue-400 bg-blue-400/5'}`}>
+                                            {project.category}
+                                        </span>
+                                    </div>
+                                    <h3 className="text-4xl font-bold mb-6 flex items-center gap-6">
+                                        {project.title}
+                                        <ArrowRight size={24} className="opacity-0 -translate-x-6 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-neutral-600" />
+                                    </h3>
+                                    <p className="text-neutral-500 text-lg leading-relaxed mb-12 max-w-3xl">{project.description}</p>
+                                    <div className="flex flex-wrap gap-3">
+                                        {project.tags.map(tag => (
+                                            <span key={tag} className="px-5 py-2 rounded-lg bg-white/5 border border-white/5 text-[10px] text-neutral-500 font-bold uppercase tracking-widest group-hover:text-white group-hover:bg-white/10 transition-all">
+                                                {tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Experience & Orgs */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-40">
                     <section id="experience">
-                        <SectionHeader title={SECTION_HEADERS.experience.title} subtitle={SECTION_HEADERS.experience.subtitle} />
+                        <SectionHeader title="Professional" subtitle="History" />
                         <div className="space-y-24">
                             {EXPERIENCES.map(exp => (
                                 <div key={exp.id} className="group">
@@ -139,8 +190,9 @@ const App: React.FC = () => {
                             ))}
                         </div>
                     </section>
+
                     <section id="community">
-                        <SectionHeader title={SECTION_HEADERS.community.title} subtitle={SECTION_HEADERS.community.subtitle} />
+                        <SectionHeader title="Leadership" subtitle="Organizations" />
                         <div className="space-y-12">
                             {CLUBS.map(club => (
                                 <div key={club.id} className="flex gap-10 group p-8 rounded-3xl hover:bg-white/[0.02] transition-all border border-transparent hover:border-white/5">
@@ -157,27 +209,26 @@ const App: React.FC = () => {
                         </div>
                     </section>
                 </div>
+
             </main>
+
             <footer className="max-w-7xl mx-auto px-10 py-40 border-t border-white/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-20">
                 <div className="space-y-6">
-                    <span className="text-white font-black text-2xl tracking-[0.3em]">{SITE_CONFIG.name.toUpperCase()}</span>
+                    <span className="text-white font-black text-2xl tracking-[0.3em]">ALEX</span>
                     <p className="text-[10px] mono text-neutral-700 uppercase tracking-[0.3em] max-w-xs leading-loose">
-                        {FOOTER_CONTENT.taglines.map((tagline, index) => (
-                            <React.Fragment key={index}>
-                                {tagline}
-                                {index < FOOTER_CONTENT.taglines.length - 1 && <br />}
-                            </React.Fragment>
-                        ))}
+                        Precision Engineering. <br />
+                        Infrastructure Architecture. <br />
+                        Performance Optimization.
                     </p>
                 </div>
                 <div className="flex flex-wrap gap-16 text-[10px] font-black text-neutral-600 uppercase tracking-[0.4em]">
-                    {FOOTER_LINKS.map(link => (
-                        <a key={link.label} href={link.href} className="hover:text-white transition-all hover:tracking-[0.5em]" target="_blank" rel="noopener noreferrer">
-                            {link.label}
-                        </a>
-                    ))}
+                    <a href="#" className="hover:text-white transition-all hover:tracking-[0.5em]">LinkedIn</a>
+                    <a href="#" className="hover:text-white transition-all hover:tracking-[0.5em]">GitHub</a>
+                    <a href="#" className="hover:text-white transition-all hover:tracking-[0.5em]">Email</a>
                 </div>
             </footer>
+
+            <AIChat />
         </div>
     );
 };

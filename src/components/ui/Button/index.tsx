@@ -1,7 +1,6 @@
 import React from 'react';
 import type { ButtonProps } from '@/types/components';
-import { cn } from '@/utils';
-import { buttonVariants } from './styles';
+import styles from './Button.module.css';
 
 /**
  * Reusable Button component with variants and sizes
@@ -15,9 +14,19 @@ export const Button: React.FC<ButtonProps> = ({
     children,
     ...props
 }) => {
+    const buttonClasses = [
+        styles.button,
+        styles[`button--${variant}`],
+        styles[`button--${size}`],
+        isLoading && styles['button--loading'],
+        className,
+    ]
+        .filter(Boolean)
+        .join(' ');
+
     return (
         <button
-            className={cn(buttonVariants({ variant, size, isLoading }), className)}
+            className={buttonClasses}
             disabled={disabled || isLoading}
             {...props}
         >

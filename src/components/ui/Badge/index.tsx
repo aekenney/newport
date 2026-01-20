@@ -1,7 +1,6 @@
 import React from 'react';
 import type { BadgeProps } from '@/types/components';
-import { cn } from '@/utils';
-import { badgeVariants } from './styles';
+import styles from './Badge.module.css';
 
 /**
  * Reusable Badge component for tags and labels
@@ -11,9 +10,13 @@ export const Badge: React.FC<BadgeProps> = ({
     variant = 'neutral',
     className = '',
 }) => {
-    return (
-        <span className={cn(badgeVariants({ variant }), className)}>
-            {children}
-        </span>
-    );
+    const badgeClasses = [
+        styles.badge,
+        styles[`badge--${variant}`],
+        className,
+    ]
+        .filter(Boolean)
+        .join(' ');
+
+    return <span className={badgeClasses}>{children}</span>;
 };

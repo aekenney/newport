@@ -1,0 +1,61 @@
+.mobile-menu__button {
+    padding: var(--spacing-sm);
+    color: var(--color-neutral-500);
+    transition: color var(--transition-base);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.mobile-menu__button:hover {
+    color: var(--color-primary);
+}
+
+.mobile-menu__overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: var(--z-modal-backdrop);
+}
+
+.mobile-menu__nav {
+    position: fixed;
+    top: 5rem;
+    right: 0;
+    width: 16rem;
+    height: calc(100vh - 5rem);
+    background-color: var(--color-secondary);
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: var(--z-modal);
+}
+
+.mobile-menu__links {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-2xl);
+    gap: var(--spacing-2xl);
+}
+
+.mobile-menu__link {
+    font-size: var(--font-size-sm);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-neutral-500);
+    text-decoration: none;
+    transition: color var(--transition-base);
+}
+
+.mobile-menu__link:hover {
+    color: var(--color-primary);
+}
+
+@media (min-width: 1024px) {
+
+    .mobile-menu__button,
+    .mobile-menu__overlay,
+    .mobile-menu__nav {
+        display: none;
+    }
+}
