@@ -5,13 +5,11 @@ import {
     Terminal,
     Star,
     GitBranch,
-    Box,
     ArrowRight,
     Droplets,
     ChevronRight,
     Cpu,
     Layers,
-    FlaskConical
 } from 'lucide-react';
 import BurnoutHero from '@/components/features/BurnoutHero';
 import { PROJECTS, EXPERIENCES, REPOS, CLUBS, SITE_CONFIG } from '@/constants';

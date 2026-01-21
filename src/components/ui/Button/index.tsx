@@ -2,9 +2,6 @@ import React from 'react';
 import type { ButtonProps } from '@/types/components';
 import styles from './Button.module.css';
 
-/**
- * Reusable Button component with variants and sizes
- */
 export const Button: React.FC<ButtonProps> = ({
     variant = 'primary',
     size = 'md',

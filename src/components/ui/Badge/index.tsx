@@ -2,9 +2,6 @@ import React from 'react';
 import type { BadgeProps } from '@/types/components';
 import styles from './Badge.module.css';
 
-/**
- * Reusable Badge component for tags and labels
- */
 export const Badge: React.FC<BadgeProps> = ({
     children,
     variant = 'neutral',

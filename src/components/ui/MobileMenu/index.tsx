@@ -8,9 +8,6 @@ interface MobileMenuProps {
     onToggle: () => void;
 }
 
-/**
- * Mobile navigation menu component
- */
 export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onToggle }) => {
     return (
         <>

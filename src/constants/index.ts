@@ -2,7 +2,7 @@
 import { Project, Experience, Club, GithubRepo } from '@/types';
 
 export const SITE_CONFIG = {
-    name: "ALEX",
+    name: "AIDEN",
     role: "Systems Software Engineer",
     tagline: "Systems Infrastructure & Embedded Performance",
     about: {

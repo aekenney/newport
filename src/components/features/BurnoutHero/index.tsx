@@ -195,7 +195,6 @@ const BurnoutHero: React.FC = () => {
         </div>
       </div>
 
-      {/* Cinematic Vignette */}
       <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_150px_rgba(0,0,0,0.8)]"></div>
     </div>
   );

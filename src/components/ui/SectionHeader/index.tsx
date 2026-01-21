@@ -2,9 +2,6 @@ import React from 'react';
 import type { SectionHeaderProps } from '@/types/components';
 import styles from './SectionHeader.module.css';
 
-/**
- * Reusable section header component
- */
 export const SectionHeader: React.FC<SectionHeaderProps> = ({ title, subtitle }) => {
     return (
         <div className={styles['section-header']}>
