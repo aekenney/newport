@@ -1,6 +1,12 @@
 
 import { Project, Experience, Club, GithubRepo } from '@/types';
 
+export const NAV_LINKS = [
+    { label: 'Manifest', href: '#repos' },
+    { label: 'Engineering', href: '#projects' },
+    { label: 'History', href: '#experience' }
+];
+
 export const SITE_CONFIG = {
     name: "AIDEN",
     role: "Systems Software Engineer",
